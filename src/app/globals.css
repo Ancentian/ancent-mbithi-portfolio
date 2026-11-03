@@ -1,0 +1,82 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-navy: #0b245c;
+  --color-navy-dark: #081d4d;
+  --color-navy-deep: #06163d;
+  --color-orange: #ff641e;
+  --color-orange-light: #ff7a45;
+  --color-orange-ink: #d9480f; /* orange that passes AA as text on cream/white */
+  --color-cream: #fff9f5;
+  --color-ink: #071b52;
+  --color-muted: #56617a;
+  --color-line: #e9d8cf;
+  --color-line-soft: #f1e6df;
+
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-bold tracking-[-0.025em] text-balance;
+  }
+  ::selection {
+    @apply bg-orange text-white;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-orange;
+  }
+}
+
+@utility container-page {
+  @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8;
+}
+
+@utility eyebrow {
+  @apply text-[11px] font-bold tracking-[0.2em] uppercase text-orange-ink;
+}
+
+/* Hero illustration: slow dash flow along the connection lines */
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+@keyframes node-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.flow-line {
+  stroke-dasharray: 4 8;
+  animation: dash-flow 3.2s linear infinite;
+}
+.node-float {
+  animation: node-float 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .flow-line,
+  .node-float {
+    animation: none;
+  }
+}
