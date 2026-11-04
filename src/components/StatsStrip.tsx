@@ -1,4 +1,5 @@
 import { stats } from '@/data/site';
+import { CountUp } from './ui/CountUp';
 
 export function StatsStrip() {
   return (
@@ -18,7 +19,7 @@ export function StatsStrip() {
               <div className="flex flex-col">
                 <dt className="order-2 mt-1 text-[13px] leading-snug font-medium text-ink/80">{s.label}</dt>
                 <dd className="order-1 text-2xl font-extrabold tracking-[-0.03em] text-ink transition-colors duration-200 group-hover:text-orange-ink sm:text-[1.7rem]">
-                  {s.value}
+                  <CountUp value={s.value} />
                 </dd>
                 <dd className="order-3 mt-0.5 text-xs text-muted">{s.note}</dd>
               </div>

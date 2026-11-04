@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="border-t border-white/10 bg-navy-dark text-white/55">
       <div className="container-page flex flex-col gap-3 py-7 text-[13px] sm:flex-row sm:items-center sm:justify-between">
         <p>
-          © {new Date().getFullYear()} {profile.name}. Built with Next.js.
+          © {new Date().getFullYear()} {profile.name}. All rights reserved.
         </p>
         <ul className="flex gap-6">
           <li>

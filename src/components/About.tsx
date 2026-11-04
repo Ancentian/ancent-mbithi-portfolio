@@ -8,7 +8,7 @@ export function About() {
   return (
     <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
       <Reveal className="lg:col-span-5">
-        <div className="group relative mx-auto max-w-[420px]">
+        <div className="group relative mx-auto max-w-105">
           {/* Offset frame behind the portrait */}
           <div
             aria-hidden
@@ -19,7 +19,7 @@ export function About() {
               src={profile.photo}
               alt={`${profile.name}, ${profile.role} based in Nairobi`}
               fill
-              priority={false}
+              loading="eager"
               sizes="(min-width: 1024px) 420px, (min-width: 640px) 60vw, 90vw"
               className="object-cover object-[50%_85%] transition-transform duration-500 ease-out-soft group-hover:scale-[1.03]"
             />

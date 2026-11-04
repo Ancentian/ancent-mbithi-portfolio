@@ -11,11 +11,11 @@ import {
   GraduationCap,
   Layers,
   Plug,
-  ServerCog,
   CreditCard,
   ReceiptText,
   ShieldCheck,
   Smartphone,
+  ServerCog,
   TrendingUp,
 } from 'lucide-react';
 
@@ -112,8 +112,8 @@ export type Stat = { value: string; label: string; note: string; icon: LucideIco
 export const stats: Stat[] = [
   { value: '5+ Years', label: 'Professional experience', note: 'Since 2020', icon: Clock },
   { value: '95%', label: 'System availability achieved', note: 'Up from 75%', icon: Activity },
-  { value: '65%', label: 'Faster ICT response time', note: 'Ticketing & monitoring', icon: TrendingUp },
-  { value: '20%', label: 'Less network downtime', note: 'Proactive optimisation', icon: ServerCog },
+  { value: '3×', label: 'Faster ICT response time', note: '65% less time · ticketing & monitoring', icon: TrendingUp },
+  { value: '80%', label: 'Less system downtime', note: 'From 25% down to 5%', icon: ServerCog },
 ];
 
 export const about = {
