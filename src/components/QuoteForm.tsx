@@ -118,7 +118,7 @@ export function QuoteForm() {
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <label className={label}>
           Full name
-          <input name="name" required maxLength={limits.name} autoComplete="name" className={field} placeholder="Jane Wanjiku" />
+          <input name="name" required maxLength={limits.name} autoComplete="name" className={field} placeholder="Ancent Mbithi" />
         </label>
         <label className={label}>
           Email

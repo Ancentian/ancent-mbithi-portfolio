@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, Mail } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Mail } from 'lucide-react';
 import { Footer } from '@/components/Footer';
 import { Navbar } from '@/components/Navbar';
 import { Button } from '@/components/ui/Button';
@@ -83,6 +83,15 @@ export default function CaseStudyPage() {
           <div className="container-page mt-16 flex flex-wrap gap-3 border-t border-line pt-10">
             <Button href={featuredProject.code} variant="outline-dark" target="_blank" rel="noopener" icon={<GithubIcon />}>
               View Code
+            </Button>
+            <Button
+              href={featuredProject.live}
+              variant="outline-dark"
+              target="_blank"
+              rel="noopener"
+              icon={<ExternalLink aria-hidden className="size-4" />}
+            >
+              Visit live system
             </Button>
             <Button href="/#quote" arrow icon={<Mail aria-hidden className="size-4" />}>
               Request a quote for a similar project

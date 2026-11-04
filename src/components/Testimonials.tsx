@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { BadgeCheck, ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { testimonials } from '@/data/site';
 import { Reveal } from './ui/Reveal';
@@ -20,6 +20,20 @@ function usePerView() {
     return () => mq.removeEventListener('change', update);
   }, []);
   return perView;
+}
+
+function Stars({ rating }: { rating: number }) {
+  return (
+    <span className="flex gap-0.5" role="img" aria-label={`Rated ${rating} out of 5`}>
+      {Array.from({ length: 5 }, (_, i) => (
+        <Star
+          key={i}
+          aria-hidden
+          className={`size-4 ${i < rating ? 'fill-amber-400 text-amber-400' : 'fill-ink/10 text-ink/10'}`}
+        />
+      ))}
+    </span>
+  );
 }
 
 function initials(name: string) {
@@ -125,7 +139,10 @@ export function Testimonials() {
                       t.draft ? 'border-dashed border-orange/50' : 'border-line/70'
                     }`}
                   >
-                    <Quote aria-hidden className="size-8 text-orange transition-transform duration-300 group-hover:-rotate-6" />
+                    <div className="flex items-center justify-between gap-4">
+                      <Quote aria-hidden className="size-8 text-orange transition-transform duration-300 group-hover:-rotate-6" />
+                      <Stars rating={t.rating} />
+                    </div>
                     <blockquote className="mt-5 flex-1 text-lg leading-relaxed font-medium text-ink sm:text-xl">
                       &ldquo;{t.quote}&rdquo;
                     </blockquote>
@@ -136,12 +153,17 @@ export function Testimonials() {
                       <span>
                         <span className="block text-[15px] font-bold text-ink">{t.name}</span>
                         <span className="block text-[13px] text-muted">
-                          {t.role}, {t.company}
+                          {[t.role, t.company].filter(Boolean).join(', ')}
                         </span>
                       </span>
-                      {t.draft && (
+                      {t.draft ? (
                         <span className="ml-auto rounded bg-orange/10 px-2 py-0.5 text-[10px] font-bold tracking-wide text-orange-ink uppercase">
-                          Draft · dev only
+                          Awaiting approval
+                        </span>
+                      ) : (
+                        <span className="ml-auto inline-flex shrink-0 items-center gap-1 rounded-md bg-emerald-50 px-2 py-1 text-[11px] font-semibold text-emerald-700 ring-1 ring-emerald-600/15">
+                          <BadgeCheck aria-hidden className="size-3.5" />
+                          Approved
                         </span>
                       )}
                     </figcaption>

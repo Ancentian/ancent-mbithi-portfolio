@@ -48,6 +48,18 @@ export function Projects() {
                   View Code
                 </Button>
               </div>
+              <a
+                href={featuredProject.live}
+                target="_blank"
+                rel="noopener"
+                className="group mt-5 inline-flex items-center gap-1.5 self-start text-sm font-semibold text-ink hover:text-orange-ink"
+              >
+                Visit live system
+                <ArrowUpRight
+                  aria-hidden
+                  className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
             </div>
             <div className="relative bg-navy-dark p-6 sm:p-10 lg:p-12">
               <div

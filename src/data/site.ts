@@ -90,7 +90,7 @@ export const nav: NavItem[] = [
     section: 'projects',
     children: [
       { label: 'Milk Cooperative case study', href: '/work/milk-cooperative' },
-      { label: 'Live websites', href: '/#websites' },
+      { label: 'Live websites & systems', href: '/#websites' },
       { label: 'KRA eTIMS integration', href: '/#projects' },
       { label: 'All repositories on GitHub', href: 'https://github.com/Ancentian', external: true },
     ],
@@ -184,6 +184,7 @@ export const featuredProject = {
   tags: ['Laravel', 'MySQL', 'M-Pesa Daraja', 'SMS API', 'REST APIs'],
   caseStudy: '/work/milk-cooperative',
   code: 'https://github.com/Ancentian/comaziwa_v2',
+  live: 'https://www.kathande.embucomaziwa.co.ke/dashboard/index',
 };
 
 export const projects: Project[] = [
@@ -228,6 +229,8 @@ export const projects: Project[] = [
 export type LiveSite = {
   title: string;
   client: string;
+  /** Systems behind a sign-in show a "Login portal" badge so visitors know what to expect. */
+  portal?: boolean;
   url: string;
   image: string;
   summary: string;
@@ -236,6 +239,28 @@ export type LiveSite = {
 };
 
 export const liveSites: LiveSite[] = [
+  {
+    title: 'Comaziwa Cooperative Management',
+    client: 'Multi-tenant SaaS · Embu dairy cooperatives',
+    portal: true,
+    url: 'https://www.kathande.embucomaziwa.co.ke/dashboard/index',
+    image: '/work/comaziwa.jpg',
+    summary:
+      'The live cooperative platform: each society gets its own subdomain and workspace for milk collections, farmer payments, store operations and member services.',
+    highlights: ['Separate workspace per cooperative society', 'Milk collections and M-Pesa farmer payments', 'Staff and member sign-in'],
+    tags: ['Laravel', 'MySQL', 'M-Pesa'],
+  },
+  {
+    title: 'Apamoyo Scholarship Management',
+    client: 'Scholarship programme · NGO',
+    portal: true,
+    url: 'https://www.apamoyo.cowango.org/',
+    image: '/work/apamoyo.jpg',
+    summary:
+      'A secure workspace for running a scholarship programme: scholar records, education progress, sponsorships and programme impact in one place.',
+    highlights: ['Scholar profiles and education progress', 'Sponsorship management', 'Programme impact reporting'],
+    tags: ['Web app', 'Dashboards', 'Reporting'],
+  },
   {
     title: 'TaxGuide Africa LLP',
     client: 'Professional services firm · Nairobi',
@@ -261,34 +286,48 @@ export const liveSites: LiveSite[] = [
 export type Testimonial = {
   quote: string;
   name: string;
+  /** Job title; leave empty to show the organisation only. */
   role: string;
   company: string;
-  /** Draft entries only render in development, so placeholders never reach the live site. */
+  /** Star rating out of 5. */
+  rating: number;
+  /** Draft entries only render in development, so unapproved quotes never reach the live site. */
   draft?: boolean;
 };
 
-// Replace the drafts with real quotes (with permission) and remove `draft: true`.
+// Approved by each person. Add `draft: true` to hide a quote from the live site again.
 export const testimonials: Testimonial[] = [
   {
-    quote: 'Draft: replace with a real quote from a client or manager about a project you delivered.',
-    name: 'Client name',
-    role: 'Role',
-    company: 'Organisation',
-    draft: true,
+    quote:
+      'Ancent built our website from the ground up and understood what a professional services firm needs: clear service pages, consultation requests and WhatsApp enquiries that reach us straight away, and a site our team can keep up to date. He was responsive throughout and delivered a site we are proud to share with clients.',
+    name: 'George Guda',
+    role: '',
+    company: 'TaxGuide Africa LLP',
+    rating: 5,
   },
   {
-    quote: 'Draft: a second quote, ideally about reliability, communication or the results the system produced.',
-    name: 'Client name',
-    role: 'Role',
-    company: 'Organisation',
-    draft: true,
+    quote:
+      'Since Ancent took over ICT at Eastlands, our systems have gone from a daily worry to something we rely on. Downtime has dropped, staff requests are tracked and resolved quickly, and our new website lets students apply online. He also trains our staff and students, which has raised digital skills across the college.',
+    name: 'Stephen Wambugu',
+    role: 'Vice Principal, Administration',
+    company: 'Eastlands College of Technology',
+    rating: 5,
   },
   {
-    quote: 'Draft: a third quote, for example from a team you trained or an institution you supported.',
-    name: 'Client name',
-    role: 'Role',
-    company: 'Organisation',
-    draft: true,
+    quote:
+      'I have built several full stack systems with Ancent, and he is the developer I want on the hard parts: database design, payment integrations and getting things running reliably in production. He writes clean, maintainable code, raises problems early, and does not consider a feature done until it works for real users.',
+    name: 'Daniel Mutuku',
+    role: 'Full Stack Developer',
+    company: 'Moringa School',
+    rating: 5,
+  },
+  {
+    quote:
+      'We have delivered multiple systems together at Ezalta, and Ancent is someone I trust to own a project end to end. He turns loose client requirements into a working plan, handles the backend and integrations without hand-holding, and keeps supporting what he builds long after launch. Our clients notice the difference.',
+    name: 'Peter Ndiragu',
+    role: '',
+    company: 'Ezalta Technologies',
+    rating: 5,
   },
 ];
 
